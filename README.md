@@ -1,1 +1,1 @@
-# SVG-logo-Maker-Challenge-10
+# SVG-Logo-Maker
