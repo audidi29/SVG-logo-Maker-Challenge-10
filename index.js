@@ -1,9 +1,5 @@
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
-
 const inquirer = require("inquirer");
-const { Circle, Square, Triangle } = require('./lib/shapes');
-const fs = require('fs'); // Corrected 'filesystem' to 'fs'
+const fs = require('fs');
 
 class Svg {
   constructor() {
@@ -37,7 +33,7 @@ const questions = [
   },
   {
     type: "input",
-    name: "shape",
+    name: "shape-color",
     message: "SHAPE COLOR: Enter a color keyword (OR a hexadecimal number):",
   },
   {
@@ -48,6 +44,36 @@ const questions = [
   },
 ];
 
+class Circle {
+  constructor(color) {
+    this.color = color;
+  }
+
+  render() {
+    return `<circle cx="150" cy="100" r="50" fill="${this.color}" />`;
+  }
+}
+
+class Square {
+  constructor(color) {
+    this.color = color;
+  }
+
+  render() {
+    return `<rect x="100" y="50" width="100" height="100" fill="${this.color}" />`;
+  }
+}
+
+class Triangle {
+  constructor(color) {
+    this.color = color;
+  }
+
+  render() {
+    return `<polygon points="100,50 150,150 200,50" fill="${this.color}" />`;
+  }
+}
+
 function init() {
   console.log("Starting init");
   let svgString = "";
@@ -56,29 +82,27 @@ function init() {
   inquirer.prompt(questions).then((answers) => {
     const userText = answers.text;
     const userFontColor = answers["text-color"];
-    const userShapeColor = answers.shape;
+    const userShapeColor = answers["shape-color"];
     const userShapeType = answers["pixel-image"];
     let userShape;
 
     switch (userShapeType.toLowerCase()) {
       case "square":
-        userShape = new Square();
+        userShape = new Square(userShapeColor);
         console.log("User selected Square shape");
         break;
       case "circle":
-        userShape = new Circle();
+        userShape = new Circle(userShapeColor);
         console.log("User selected Circle shape");
         break;
       case "triangle":
-        userShape = new Triangle();
+        userShape = new Triangle(userShapeColor);
         console.log("User selected Triangle shape");
         break;
       default:
         console.log("Invalid shape!");
         return;
     }
-
-    userShape.setColor(userShapeColor);
 
     const svg = new Svg();
     svg.setTextElement(userText, userFontColor);
@@ -95,11 +119,11 @@ function init() {
 
 function writeToFile(fileName, data) {
   console.log("Writing [" + data + "] to file [" + fileName + "]");
-  fs.writeFile(fileName, data, function (err) { // Corrected 'filesystem' to 'fs'
+  fs.writeFile(fileName, data, function (err) {
     if (err) {
       return console.log(err);
     }
-    console.log("Congratulations, you have Generated a logo.svg!");
+    console.log("Congratulations, you have generated a logo.svg!");
   });
 }
 
