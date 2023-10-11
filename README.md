@@ -1,3 +1,4 @@
+
 # SVG-Logo-Maker Challenge 10
   
 ## Description:
@@ -54,12 +55,19 @@ THEN I am shown a 300x200 pixel image that matches the criteria I entered
 ## Walkthrough Video:
 
 
+https://github.com/audidi29/SVG-logo-Maker-Challenge-10/assets/131299841/59c1173e-5f18-47d8-b4aa-4ae1bfcc5a2a
+
+
+
+
 ## Screenshots:
+
 ### Figure 1. Command line application
+<img width="1440" alt="Screenshot 1" src="https://github.com/audidi29/SVG-logo-Maker-Challenge-10/assets/131299841/42a28d47-429f-437d-8e9a-8856b92d2575"
 
-### Figure 2. Jest Testing "npm test"
 
-### Figure 3. Generated "logo.svg" file
+### Figure 2. Generated "logo.svg" file
+<img width="1440" alt="Screenshot 2" src="https://github.com/audidi29/SVG-logo-Maker-Challenge-10/assets/131299841/58be47b7-9292-47f5-aba3-1b93d26d060a">
 
 
 
